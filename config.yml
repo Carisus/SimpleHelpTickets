@@ -22,8 +22,9 @@
 # -USE_MYSQL
 #   Whether to use MySQL instead of SQLite
 # PERMISSONS:
-# sht.ticket - Create help tickets
-# sht.admin - Administrate tickets
+# /////  DO NOT USE ticket.*  \\\\\
+# ticket.ticket - Create help tickets
+# ticket.admin - Administrate tickets
 #
 MaxTickets: 3
 TicketExpiration: 7

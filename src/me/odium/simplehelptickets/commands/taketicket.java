@@ -35,11 +35,11 @@ public class taketicket implements CommandExecutor {
     }
 
     if (player == null) {
-      sender.sendMessage(plugin.RED+"This command can only be run by a player, use /checkticket instead.");
+      sender.sendMessage(plugin.RED+"This command can only be run by a player, use /ticketcheck instead.");
       return true;
     }
     if(args.length == 0) {        
-      sender.sendMessage(ChatColor.WHITE + "/taketicket <#>");
+      sender.sendMessage(ChatColor.WHITE + "/tickettake <#>");
       return true;
     }
     
@@ -111,7 +111,7 @@ public class taketicket implements CommandExecutor {
       sender.sendMessage(ChatColor.GOLD+"[ "+ChatColor.WHITE+ChatColor.BOLD+"Ticket "+id+ChatColor.RESET+ChatColor.GOLD+" ]");
       sender.sendMessage(ChatColor.BLUE+" Owner: "+ChatColor.WHITE+owner);
       sender.sendMessage(ChatColor.BLUE+" Date: "+ChatColor.WHITE+date);
-      if (plugin.getConfig().getBoolean("MultiWorld") == true) {
+      if (plugin.getConfig().getBoolean("MultiWorld")) {
         sender.sendMessage(ChatColor.BLUE+" World: "+ChatColor.WHITE+worldName);
       }
       if (status.contains("OPEN")) {
@@ -144,7 +144,7 @@ public class taketicket implements CommandExecutor {
       // NOTIFY -OTHER- ADMINS 
       Player[] players = Bukkit.getOnlinePlayers();
       for(Player op: players){
-        if(op.hasPermission("sht.admin") && op != player) {
+        if(op.hasPermission("ticket.admin") && op != player) {
           op.sendMessage(plugin.getMessage("TakeTicketADMIN").replace("&arg", id).replace("&admin", admin));
         }
       }

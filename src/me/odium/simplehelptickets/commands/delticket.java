@@ -32,7 +32,7 @@ public class delticket implements CommandExecutor {
     }
 
     if(args.length == 0) {        
-      sender.sendMessage(ChatColor.WHITE + "/delticket <#>");
+      sender.sendMessage(ChatColor.WHITE + "/ticketdel <#>");
       return true;
     } else if(args.length == 1) {
 
@@ -104,7 +104,7 @@ public class delticket implements CommandExecutor {
             rs.next(); //sets pointer to first record in result set
           }
           String playerUUID = player.getUniqueId().toString();
-          if (!rs.getString("uuid").equals(playerUUID) && !player.hasPermission("sht.admin")) {
+          if (!rs.getString("uuid").equals(playerUUID) && !player.hasPermission("ticket.admin")) {
             sender.sendMessage(plugin.GRAY+"[SimpleHelpTickets] "+plugin.RED+"Ticket "+rs.getString("id")+" is not your ticket to delete.");
             return true;
           } else {

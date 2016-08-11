@@ -32,7 +32,7 @@ public class replyticket implements CommandExecutor {
     }
 
     if (args.length <= 1) {      
-      sender.sendMessage("/replyticket <#> <reply>");
+      sender.sendMessage("/ticketreply <#> <reply>");
       return true;      
     } else if (args.length > 1) {
 
@@ -118,8 +118,8 @@ public class replyticket implements CommandExecutor {
             } else {
               // PLAYER COMMANDS
               String admin = player.getName();
-              //  CHECK IF PLAYE HAS TICKET PERMS OR ADMIN PERMS
-              if (!player.hasPermission("sht.ticket") && !player.hasPermission("sht.admin")) {
+              //  CHECK IF PLAYER HAS TICKET PERMS OR ADMIN PERMS
+              if (!player.hasPermission("ticket.ticket") && !player.hasPermission("ticket.admin")) {
                 sender.sendMessage(plugin.getMessage("NoPermission"));
                 return true;
               }
@@ -176,7 +176,7 @@ public class replyticket implements CommandExecutor {
                 // IF PLAYER ISNT THE TICKET OWNER 
               } else {
 
-                if (!player.hasPermission("sht.admin")) {
+                if (!player.hasPermission("ticket.admin")) {
                   sender.sendMessage(plugin.getMessage("NoPermission"));
                   return true;
                 }
@@ -185,7 +185,7 @@ public class replyticket implements CommandExecutor {
                 // INFORM OPS THAT AN ADMIN REPLIED TO TICKET
                 Player[] players = Bukkit.getOnlinePlayers();
                 for(Player op: players){
-                  if(op.hasPermission("sht.admin")) {
+                  if(op.hasPermission("ticket.admin")) {
                     op.sendMessage(plugin.getMessage("AdminRepliedToTicket").replace("&arg", id));
                   }
                 }

@@ -1,6 +1,7 @@
 name: SimpleHelpTickets
 main: me.odium.simplehelptickets.SimpleHelpTickets
 version: 1.3.9
+author: Carisus
 commands:
    sht:
       aliases: [helptickets, simplehelptickets]
@@ -10,37 +11,38 @@ commands:
    ticket:
       aliases: [helpme, grief]
       description: Open a help ticket
-      permission: sht.ticket
+      permission: ticket.ticket
       usage: /ticket <Description>
    tickets:
       description: Review your/all help tickets
       permission:
       usage: /tickets [ac]  
-   closeticket:
+   ticketclose:
+      aliases: [ticketcl]
       description: close or reopen a help ticket
       permission:
-      usage: /closeticket [r] <#>
-   replyticket:
-      aliases: [rticket]
+      usage: /ticketclose [r] <#>
+   ticketreply:
+      aliases: [ticketr]
       description: reply to a help ticket
       permission:
-      usage: /replyticket <#> <reply>
-   taketicket:
+      usage: /ticketreply <#> <reply>
+   tickettake:
       description: Assign self to a help ticket
-      permission: sht.admin
-      usage: /taketicket <#>
-   checkticket:
-      aliases: [chticket]
+      permission: ticket.admin
+      usage: /tickettake <#>
+   ticketcheck:
+      aliases: [ticketch]
       description: check your/a help ticket
       permission:
-      usage: /checkticket <#>
-   delticket:
-      aliases: [dticket]
+      usage: /ticketcheck <#>
+   ticketdel:
+      aliases: [ticketd]
       description: Delete a ticket
       permission:
-      usage: /delticket <#>
-   purgetickets:
-      aliases: [ptickets]
+      usage: /ticketdel <#>
+   ticketpurge:
+      aliases: [ticketp]
       description: Purge all expired tickets
-      permission: sht.admin
-      usage: /purgetickets
+      permission: ticket.admin
+      usage: /ticketpurge

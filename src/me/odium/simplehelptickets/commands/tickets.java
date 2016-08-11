@@ -34,7 +34,7 @@ public class tickets implements CommandExecutor {
     }
 
 
-    if (player == null || player.hasPermission("sht.admin")) {
+    if (player == null || player.hasPermission("ticket.admin")) {
 
 
 
@@ -57,7 +57,7 @@ public class tickets implements CommandExecutor {
             if (desc.length() > 42) {
               desc = desc.substring(0, 42)+"...";              
             }            
-            String ownerName = Bukkit.getOfflinePlayer(rs.getString("uuid")).getName();            
+            String ownerName = Bukkit.getOfflinePlayers(rs.getString("uuid")).getName();
             
             if (!rs.getString("adminreply").equalsIgnoreCase("NONE") && rs.getString("userreply").equalsIgnoreCase("NONE")) { // if only admin has replied
               sender.sendMessage(ChatColor.GOLD+"("+ChatColor.WHITE+rs.getInt("id")+ChatColor.GOLD+") "+ChatColor.DARK_GREEN+ownerName+": "+ChatColor.YELLOW+desc);
@@ -90,7 +90,7 @@ public class tickets implements CommandExecutor {
             if (desc.length() > 42) {
               desc = desc.substring(0, 42)+"...";
             }
-            String ownerName = Bukkit.getOfflinePlayer(rs.getString("uuid")).getName();
+            String ownerName = Bukkit.getOfflinePlayers(rs.getString("uuid")).getName();
             if (!rs.getString("adminreply").equalsIgnoreCase("NONE") && rs.getString("userreply").equalsIgnoreCase("NONE")) { // IF ONLY ADMIN HAS REPLIED     
               if (rs.getString("status").equalsIgnoreCase("OPEN")) { // IF TICKET IS OPEN AND ADMIN HAS REPLIED
                 sender.sendMessage(ChatColor.GOLD+"("+ChatColor.WHITE+rs.getInt("id")+ChatColor.GOLD+") "+ChatColor.DARK_GREEN+ownerName+": "+ChatColor.YELLOW+desc);
@@ -141,7 +141,7 @@ public class tickets implements CommandExecutor {
             if (desc.length() > 42) {
               desc = desc.substring(0, 42)+"...";
             }
-            String ownerName = Bukkit.getOfflinePlayer(rs.getString("uuid")).getName();
+            String ownerName = Bukkit.getOfflinePlayers(rs.getString("uuid")).getName();
             if (!rs.getString("adminreply").equalsIgnoreCase("NONE") && rs.getString("userreply").equalsIgnoreCase("NONE")) { // IF ONLY ADMIN HAS REPLIED
               sender.sendMessage(ChatColor.GOLD+"("+ChatColor.GRAY+rs.getInt("id")+ChatColor.GOLD+") "+ChatColor.DARK_GRAY+ownerName+": "+ChatColor.YELLOW+desc);
             } else if (rs.getString("adminreply").equalsIgnoreCase("NONE") && !rs.getString("userreply").equalsIgnoreCase("NONE")) { // IF ONLY USER HAS REPLIED
@@ -188,7 +188,7 @@ public class tickets implements CommandExecutor {
           if (desc.length() > 42) {
             desc = desc.substring(0, 42)+"...";
           }
-          String ownerName = Bukkit.getOfflinePlayer(rs.getString("uuid")).getName();
+          String ownerName = Bukkit.getOfflinePlayers(rs.getString("uuid")).getName();
           if (!rs.getString("adminreply").equalsIgnoreCase("NONE") && rs.getString("userreply").equalsIgnoreCase("NONE")) { // IF THERE HAS BEEN AN ADMIN REPLY              
             if (rs.getString("status").equalsIgnoreCase("OPEN")) { // IF TICKET IS OPEN WITH ADMIN REPLY
               sender.sendMessage(ChatColor.GOLD+"("+ChatColor.WHITE+rs.getInt("id")+ChatColor.GOLD+") "+ChatColor.DARK_GREEN+ownerName+": "+ChatColor.YELLOW+desc);

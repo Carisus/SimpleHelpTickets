@@ -56,8 +56,11 @@ public class SimpleHelpTickets extends JavaPlugin {
 		}
 		OutputConfig = YamlConfiguration.loadConfiguration(OutputConfigFile);
 
-		// Look for defaults in the jar
-		InputStream defConfigStream = getResource("output.yml");
+		/*
+		Look for defaults in the jar
+		TODO: Fix these lines
+		*/
+        InputStream defConfigStream = getResource("output.yml");
 		if (defConfigStream != null) {
 			YamlConfiguration defConfig = YamlConfiguration.loadConfiguration(defConfigStream);
 			OutputConfig.setDefaults(defConfig);
@@ -128,12 +131,12 @@ public class SimpleHelpTickets extends JavaPlugin {
 		this.getCommand("sht").setExecutor(new sht(this));
 		this.getCommand("ticket").setExecutor(new ticket(this));
 		this.getCommand("tickets").setExecutor(new tickets(this));
-		this.getCommand("checkticket").setExecutor(new checkticket(this));
-		this.getCommand("replyticket").setExecutor(new replyticket(this));
-		this.getCommand("taketicket").setExecutor(new taketicket(this));
-		this.getCommand("delticket").setExecutor(new delticket(this));
-		this.getCommand("closeticket").setExecutor(new closeticket(this));
-		this.getCommand("purgetickets").setExecutor(new purgetickets(this));
+		this.getCommand("ticketcheck").setExecutor(new checkticket(this));
+		this.getCommand("ticketreply").setExecutor(new replyticket(this));
+		this.getCommand("tickettake").setExecutor(new taketicket(this));
+		this.getCommand("ticketdel").setExecutor(new delticket(this));
+		this.getCommand("ticketclose").setExecutor(new closeticket(this));
+		this.getCommand("ticketpurge").setExecutor(new purgetickets(this));
 		// If MySQL
 		if (this.getConfig().getBoolean("MySQL.USE_MYSQL")) {
 		  // Get Database Details
@@ -290,7 +293,7 @@ public class SimpleHelpTickets extends JavaPlugin {
 	  sender.sendMessage(getMessage("UserCommandsMenu-replyticket"));
 	  sender.sendMessage(getMessage("UserCommandsMenu-closeticket"));
     sender.sendMessage(getMessage("UserCommandsMenu-delticket"));
-    if(sender == null || sender.hasPermission("sht.admin")) {
+    if(sender == null || sender.hasPermission("ticket.admin")) {
 	    sender.sendMessage(getMessage("AdminCommandsMenu-Title"));
 	    sender.sendMessage(getMessage("AdminCommandsMenu-tickets"));
 	    sender.sendMessage(getMessage("AdminCommandsMenu-taketicket"));
@@ -308,42 +311,42 @@ public class SimpleHelpTickets extends JavaPlugin {
 	  String message; 
 	  
 	  if (phrase == "AdminCommandsMenu-reload") {
-      prefix =  ChatColor.DARK_AQUA + " /helptickets reload";
+      prefix =  ChatColor.DARK_AQUA + " /ticketshelp reload";
       output = replaceColorMacros(getOutputConfig().getString("AdminCommandsMenu-reload"));
       message = prefix+output; 
       return message;             
     }
 	  
 	  if (phrase == "AdminCommandsMenu-purgeticket") {
-      prefix =  ChatColor.DARK_AQUA + " /purgetickets [-c/-a]";
+      prefix =  ChatColor.DARK_AQUA + " /ticketspurge [-c/-a]";
       output = replaceColorMacros(getOutputConfig().getString("AdminCommandsMenu-purgeticket"));
       message = prefix+output; 
       return message;             
     }
 	  
 	  if (phrase == "AdminCommandsMenu-delticket") {
-      prefix =  ChatColor.DARK_AQUA + " /delticket <#>";
+      prefix =  ChatColor.DARK_AQUA + " /ticketdel <#>";
       output = replaceColorMacros(getOutputConfig().getString("AdminCommandsMenu-delticket"));
       message = prefix+output; 
       return message;             
     }
 	  
 	  if (phrase == "AdminCommandsMenu-closeticket") {
-      prefix =  ChatColor.DARK_AQUA + " /closeticket [r] <#>";
+      prefix =  ChatColor.DARK_AQUA + " /ticketclose [r] <#>";
       output = replaceColorMacros(getOutputConfig().getString("AdminCommandsMenu-closeticket"));
       message = prefix+output; 
       return message;             
     }
 	  
 	  if (phrase == "AdminCommandsMenu-replyticket") {
-      prefix =  ChatColor.DARK_AQUA + " /replyticket <#> <Reply>";
+      prefix =  ChatColor.DARK_AQUA + " /ticketreply <#> <Reply>";
       output = replaceColorMacros(getOutputConfig().getString("AdminCommandsMenu-replyticket"));
       message = prefix+output; 
       return message;             
     }
 	  
 	  if (phrase == "AdminCommandsMenu-taketicket") {
-      prefix =  ChatColor.DARK_AQUA+ " /taketicket <#>";
+      prefix =  ChatColor.DARK_AQUA+ " /tickettake <#>";
       output = replaceColorMacros(getOutputConfig().getString("AdminCommandsMenu-taketicket"));
       message = prefix+output; 
       return message;             
@@ -363,28 +366,28 @@ public class SimpleHelpTickets extends JavaPlugin {
     }
 	  
 	  if (phrase == "UserCommandsMenu-delticket") {
-      prefix =  ChatColor.GREEN + " /delticket <#>";
+      prefix =  ChatColor.GREEN + " /ticketdel <#>";
       output = replaceColorMacros(getOutputConfig().getString("UserCommandsMenu-delticket"));
       message = prefix+output; 
       return message;             
     }
 	  
 	  if (phrase == "UserCommandsMenu-closeticket") {
-      prefix =  ChatColor.GREEN + " /closeticket <#>";
+      prefix =  ChatColor.GREEN + " /ticketclose <#>";
       output = replaceColorMacros(getOutputConfig().getString("UserCommandsMenu-closeticket"));
       message = prefix+output; 
       return message;             
     }
 	  
 	  if (phrase == "UserCommandsMenu-replyticket") {
-      prefix =  ChatColor.GREEN + " /replyticket <#> <Reply>";
+      prefix =  ChatColor.GREEN + " /ticketreply <#> <Reply>";
       output = replaceColorMacros(getOutputConfig().getString("UserCommandsMenu-replyticket"));
       message = prefix+output; 
       return message;             
     }
 	  
 	  if (phrase == "UserCommandsMenu-checkticket") {
-      prefix =  ChatColor.GREEN + " /checkticket <#>";
+      prefix =  ChatColor.GREEN + " /ticketcheck <#>";
       output = replaceColorMacros(getOutputConfig().getString("UserCommandsMenu-checkticket"));
       message = prefix+output; 
       return message;             
@@ -418,7 +421,7 @@ public class SimpleHelpTickets extends JavaPlugin {
 	    }
 	  
 	  if (phrase == "UserCommandsMenu-helptickets") {
-      prefix =  ChatColor.DARK_GREEN + " /helptickets" + ChatColor.WHITE;
+      prefix =  ChatColor.DARK_GREEN + " /ticketshelp" + ChatColor.WHITE;
       output = replaceColorMacros(getOutputConfig().getString("UserCommandsMenu-helptickets"));
       message = prefix+output; 
       return message;             

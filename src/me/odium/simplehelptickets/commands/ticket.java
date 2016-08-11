@@ -152,7 +152,7 @@ public class ticket implements CommandExecutor {
               // Notify admin of new ticket
               Player[] players = Bukkit.getOnlinePlayers();
               for(Player onlinePlayer: players){ // for every player online
-                if(onlinePlayer.hasPermission("sht.admin") && onlinePlayer.getUniqueId().toString() != uuid) { // if admin perm & not ticket owner                     
+                if(onlinePlayer.hasPermission("ticket.admin") && onlinePlayer.getUniqueId().toString() != uuid) { // if admin perm & not ticket owner
                   onlinePlayer.sendMessage(plugin.getMessage("TicketOpenADMIN").replace("%player", sender.getName()));
                 }
               }
@@ -211,7 +211,7 @@ public class ticket implements CommandExecutor {
               // Notify admin of new ticket
               Player[] players = Bukkit.getOnlinePlayers();
               for(Player onlinePlayer: players){ // for every player online
-                if(onlinePlayer.hasPermission("sht.admin")) {     // if admin permission                     
+                if(onlinePlayer.hasPermission("ticket.admin")) {     // if admin permission
                   onlinePlayer.sendMessage(plugin.getMessage("TicketOpenADMIN").replace("%player", sender.getName()));
                 }
               }

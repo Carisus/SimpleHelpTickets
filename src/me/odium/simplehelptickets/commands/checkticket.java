@@ -59,13 +59,13 @@ public class checkticket implements CommandExecutor {
           rs.next(); //sets pointer to first record in result set
         }
 
-        if (player == null || player.hasPermission("sht.admin") || rs.getString("uuid").equals(player.getUniqueId().toString())) {
+        if (player == null || player.hasPermission("ticket.admin") || rs.getString("uuid").equals(player.getUniqueId().toString())) {
           String world = null;
           String date;
           String expiration;
 
           String id = rs.getString("id");
-          String owner = Bukkit.getOfflinePlayer(rs.getString("uuid")).getName();
+          String owner = Bukkit.getOfflinePlayers(rs.getString("uuid")).getName();
 
           if (plugin.getConfig().getBoolean("MySQL.USE_MYSQL")) {
             date = new SimpleDateFormat("dd/MMM/yy HH:mm").format(rs.getTimestamp("date"));  
@@ -77,7 +77,7 @@ public class checkticket implements CommandExecutor {
           String admin = rs.getString("admin");
           String adminreply = rs.getString("adminreply");
           String userreply = rs.getString("userreply");
-          if (plugin.getConfig().getBoolean("MultiWorld") == true) {
+          if (plugin.getConfig().getBoolean("MultiWorld")) {
             world = rs.getString("world");
           }
           String description = rs.getString("description");
@@ -87,7 +87,7 @@ public class checkticket implements CommandExecutor {
           sender.sendMessage(ChatColor.GOLD+"[ "+ChatColor.WHITE+ChatColor.BOLD+"Ticket "+id+ChatColor.RESET+ChatColor.GOLD+" ]");
           sender.sendMessage(ChatColor.BLUE+" Owner: "+ChatColor.WHITE+owner);
           sender.sendMessage(ChatColor.BLUE+" Date: "+ChatColor.WHITE+date);
-          if (plugin.getConfig().getBoolean("MultiWorld") == true) {
+          if (plugin.getConfig().getBoolean("MultiWorld")) {
             sender.sendMessage(ChatColor.BLUE+" World: "+ChatColor.WHITE+world);
           }
           if (status.contains("OPEN")) {

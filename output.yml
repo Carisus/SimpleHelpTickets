@@ -11,7 +11,7 @@
 #
 # &arg - The crucial argument, either Ticket ID# or ErrorMessage
 # &admin - Admin who triggered the command
-# %player - Player you trigered the command
+# %player - Player you triggered the command
 # ------------------------------------------
 Prefix: '&2[SimpleHelpTickets] '
 UserCommandsMenu-helptickets: ' &w- Display the commands menu'

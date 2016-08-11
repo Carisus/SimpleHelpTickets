@@ -30,7 +30,7 @@ public class sht implements CommandExecutor {
       plugin.displayHelp(sender);
       return true;
     } else if (args.length == 1 && args[0].equalsIgnoreCase("reload")) {
-      if(player == null || player.hasPermission("sht.reload") ) {
+      if(player == null || player.hasPermission("ticket.reload") ) {
         // Reload Config
         File file=new File(plugin.getDataFolder()+File.separator+"config.yml");
         if(!file.exists()) {
@@ -66,7 +66,7 @@ public class sht implements CommandExecutor {
     } else if (args.length == 1 && args[0].equalsIgnoreCase("check")) {
       String uuid = player.getUniqueId().toString();
       player.sendMessage(ChatColor.BLUE+"Your UUID: "+ChatColor.RESET+uuid);
-      String uuidName = Bukkit.getOfflinePlayer(uuid).getName();
+      String uuidName = Bukkit.getOfflinePlayers(uuid).getName();
       player.sendMessage(ChatColor.BLUE+"Your Name "+ChatColor.RESET+uuidName);
     }
 

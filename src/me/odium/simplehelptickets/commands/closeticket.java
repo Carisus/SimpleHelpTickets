@@ -37,7 +37,7 @@ public class closeticket implements CommandExecutor {
     }
 
     if(args.length == 0) {        
-      sender.sendMessage(ChatColor.WHITE + "/closeticket <#>");
+      sender.sendMessage(ChatColor.WHITE + "/ticketclose <#>");
       return true;
       // CLOSING TICKET
     } else if(args.length == 1) {
@@ -74,11 +74,11 @@ public class closeticket implements CommandExecutor {
         Player target = Bukkit.getPlayer(rs.getString("uuid"));
 
         // IF PLAYER IS CONSOLE, TICKETOWNER, OR ADMIN
-        if (player == null || rs.getString("uuid").equals(player.getUniqueId().toString()) || player.hasPermission("sht.admin")) {
+        if (player == null || rs.getString("uuid").equals(player.getUniqueId().toString()) || player.hasPermission("ticket.admin")) {
           // SET THE ADMIN VARIABLE TO REFLECT CONSOLE/ADMIN
           if (player == null) {
             admin = "CONSOLE";          
-          } else if (rs.getString("uuid").contains(player.getUniqueId().toString()) || player.hasPermission("sht.admin")) {          
+          } else if (rs.getString("uuid").contains(player.getUniqueId().toString()) || player.hasPermission("ticket.admin")) {
             admin = player.getName();          
           }
 
@@ -99,7 +99,7 @@ public class closeticket implements CommandExecutor {
           // NOTIFY ADMINS OF CHANGE TO TICKET
           Player[] players = Bukkit.getOnlinePlayers();
           for(Player op: players){
-            if(op.hasPermission("sht.admin") && plugin.getConfig().getBoolean("NotifyAdminOnTicketClose") && op != sender) {
+            if(op.hasPermission("ticket.admin") && plugin.getConfig().getBoolean("NotifyAdminOnTicketClose") && op != sender) {
               op.sendMessage(plugin.getMessage("TicketClosedADMIN").replace("&arg", ""+args[0]).replace("&admin", admin));
             }
           }
@@ -156,11 +156,11 @@ public class closeticket implements CommandExecutor {
         // CHECK THE OWNER OF THE TICKET, AND GET CUSTOM OUTPUT FROM CONFIG       
         Player target = Bukkit.getPlayer(rs.getString("uuid"));        
         // IF PLAYER IS CONSOLE OR ADMIN
-        if (player == null || player.hasPermission("sht.admin")) {
-          // SET THE ADMIN VARIABLE TO RELECT CONSOLE/ADMIN
+        if (player == null || player.hasPermission("ticket.admin")) {
+          // SET THE ADMIN VARIABLE TO REFLECT CONSOLE/ADMIN
           if (player == null) {
             admin = "CONSOLE";          
-          } else if (rs.getString("uuid").contains(player.getUniqueId().toString()) || player.hasPermission("sht.admin")) {          
+          } else if (rs.getString("uuid").contains(player.getUniqueId().toString()) || player.hasPermission("ticket.admin")) {
             admin = player.getName();          
           }
           // UPDATE THE TICKET
@@ -173,10 +173,10 @@ public class closeticket implements CommandExecutor {
           if (target != null && target != player) {             
             target.sendMessage(plugin.getMessage("TicketReopenedOWNER").replace("&arg", ""+id).replace("&admin", admin));
           }
-          // INFORM ADMINS OF CHANGES TOT ICKET
+          // INFORM ADMINS OF CHANGES TO TICKET
           Player[] players = Bukkit.getOnlinePlayers();
           for(Player op: players){
-            if(op.hasPermission("sht.admin") && plugin.getConfig().getBoolean("NotifyAdminOnTicketClose") && op != sender) {
+            if(op.hasPermission("ticket.admin") && plugin.getConfig().getBoolean("NotifyAdminOnTicketClose") && op != sender) {
               op.sendMessage(plugin.getMessage("TicketReopenedADMIN").replace("&arg", ""+id).replace("&admin", admin));
             }
           }

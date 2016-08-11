@@ -1,1 +1,3 @@
 src/me/odium/simplehelptickets/MySQLConnection.java
+out/
+.idea
