@@ -1,5 +1,7 @@
 package main.java.simplehelptickets.DB;
 
+import main.java.simplehelptickets.SimpleHelpTickets;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;

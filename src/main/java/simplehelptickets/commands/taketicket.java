@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.UUID;
 
-import main.java.simplehelptickets.DBConnection;
+import main.java.simplehelptickets.DB.DBConnection;
 import main.java.simplehelptickets.SimpleHelpTickets;
 
 import org.bukkit.Bukkit;

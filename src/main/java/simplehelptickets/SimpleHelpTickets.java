@@ -14,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
+import main.java.simplehelptickets.DB.MySQLConnection;
 import main.java.simplehelptickets.commands.checkticket;
 import main.java.simplehelptickets.commands.closeticket;
 import main.java.simplehelptickets.commands.delticket;

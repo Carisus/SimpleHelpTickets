@@ -67,7 +67,7 @@ public class sht implements CommandExecutor {
     } else if (args.length == 1 && args[0].equalsIgnoreCase("check")) {
       String uuid = player.getUniqueId().toString();
       player.sendMessage(ChatColor.BLUE+"Your UUID: "+ChatColor.RESET+uuid);
-      UUID plID = UUID.fromString();
+      UUID plID = UUID.fromString(uuid);
       String uuidName = Bukkit.getPlayer(plID).getName();
       player.sendMessage(ChatColor.BLUE+"Your Name "+ChatColor.RESET+uuidName);
     }

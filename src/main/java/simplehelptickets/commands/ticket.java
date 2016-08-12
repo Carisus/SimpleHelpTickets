@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.Arrays;
 
 import main.java.simplehelptickets.SimpleHelpTickets;
-import main.java.simplehelptickets.DBConnection;
+import main.java.simplehelptickets.DB.DBConnection;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;

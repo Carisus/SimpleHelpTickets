@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.Arrays;
 
-import main.java.simplehelptickets.DBConnection;
+import main.java.simplehelptickets.DB.DBConnection;
 import main.java.simplehelptickets.SimpleHelpTickets;
 
 import org.bukkit.Bukkit;

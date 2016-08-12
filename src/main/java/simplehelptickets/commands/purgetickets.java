@@ -2,7 +2,7 @@ package main.java.simplehelptickets.commands;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
-import main.java.simplehelptickets.DBConnection;
+import main.java.simplehelptickets.DB.DBConnection;
 import main.java.simplehelptickets.SimpleHelpTickets;
 
 import org.bukkit.ChatColor;
