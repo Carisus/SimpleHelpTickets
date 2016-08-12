@@ -1,4 +1,4 @@
-package me.odium.simplehelptickets;
+package main.java.simplehelptickets;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,17 +14,17 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-import me.odium.simplehelptickets.commands.checkticket;
-import me.odium.simplehelptickets.commands.closeticket;
-import me.odium.simplehelptickets.commands.delticket;
-import me.odium.simplehelptickets.commands.purgetickets;
-import me.odium.simplehelptickets.commands.replyticket;
-import me.odium.simplehelptickets.commands.sht;
-import me.odium.simplehelptickets.commands.taketicket;
-import me.odium.simplehelptickets.commands.ticket;
-import me.odium.simplehelptickets.commands.tickets;
-import me.odium.simplehelptickets.listeners.PListener;
-import me.odium.simplehelptickets.DBConnection;
+import main.java.simplehelptickets.commands.checkticket;
+import main.java.simplehelptickets.commands.closeticket;
+import main.java.simplehelptickets.commands.delticket;
+import main.java.simplehelptickets.commands.purgetickets;
+import main.java.simplehelptickets.commands.replyticket;
+import main.java.simplehelptickets.commands.sht;
+import main.java.simplehelptickets.commands.taketicket;
+import main.java.simplehelptickets.commands.ticket;
+import main.java.simplehelptickets.commands.tickets;
+import main.java.simplehelptickets.listeners.PListener;
+import main.java.simplehelptickets.DB.DBConnection;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;

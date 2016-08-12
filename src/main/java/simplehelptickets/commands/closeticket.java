@@ -1,10 +1,10 @@
-package me.odium.simplehelptickets.commands;
+package main.java.simplehelptickets.commands;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 
-import me.odium.simplehelptickets.DBConnection;
-import me.odium.simplehelptickets.SimpleHelpTickets;
+import main.java.simplehelptickets.DB.DBConnection;
+import main.java.simplehelptickets.SimpleHelpTickets;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;

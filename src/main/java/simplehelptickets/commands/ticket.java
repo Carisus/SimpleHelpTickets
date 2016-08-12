@@ -1,4 +1,4 @@
-package me.odium.simplehelptickets.commands;
+package main.java.simplehelptickets.commands;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,8 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Arrays;
 
-import me.odium.simplehelptickets.SimpleHelpTickets;
-import me.odium.simplehelptickets.DBConnection;
+import main.java.simplehelptickets.SimpleHelpTickets;
+import main.java.simplehelptickets.DBConnection;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -152,7 +152,7 @@ public class ticket implements CommandExecutor {
               // Notify admin of new ticket
               Player[] players = Bukkit.getOnlinePlayers();
               for(Player onlinePlayer: players){ // for every player online
-                if(onlinePlayer.hasPermission("ticket.admin") && onlinePlayer.getUniqueId().toString() != uuid) { // if admin perm & not ticket owner
+                if(onlinePlayer.hasPermission("ticket.admin") && !onlinePlayer.getUniqueId().toString().equals(uuid)) { // if admin perm & not ticket owner
                   onlinePlayer.sendMessage(plugin.getMessage("TicketOpenADMIN").replace("%player", sender.getName()));
                 }
               }

@@ -1,5 +1,5 @@
 name: SimpleHelpTickets
-main: me.odium.simplehelptickets.SimpleHelpTickets
+main: main.java.simplehelptickets.SimpleHelpTickets
 version: 1.3.9
 author: Carisus
 commands:

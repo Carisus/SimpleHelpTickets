@@ -1,11 +1,13 @@
-package me.odium.simplehelptickets.commands;
+package main.java.simplehelptickets.commands;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
-import me.odium.simplehelptickets.DBConnection;
-import me.odium.simplehelptickets.SimpleHelpTickets;
+import java.util.UUID;
+
+import main.java.simplehelptickets.DB.DBConnection;
+import main.java.simplehelptickets.SimpleHelpTickets;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -65,7 +67,8 @@ public class checkticket implements CommandExecutor {
           String expiration;
 
           String id = rs.getString("id");
-          String owner = Bukkit.getOfflinePlayers(rs.getString("uuid")).getName();
+          UUID plID = UUID.fromString(rs.getString("uuid"));
+          String owner = Bukkit.getServer().getPlayer(plID).getName();
 
           if (plugin.getConfig().getBoolean("MySQL.USE_MYSQL")) {
             date = new SimpleDateFormat("dd/MMM/yy HH:mm").format(rs.getTimestamp("date"));  

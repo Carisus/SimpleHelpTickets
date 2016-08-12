@@ -1,9 +1,9 @@
-package me.odium.simplehelptickets.listeners;
+package main.java.simplehelptickets.listeners;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
-import me.odium.simplehelptickets.DBConnection;
-import me.odium.simplehelptickets.SimpleHelpTickets;
+import main.java.simplehelptickets.DB.DBConnection;
+import main.java.simplehelptickets.SimpleHelpTickets;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;

@@ -1,4 +1,4 @@
-package me.odium.simplehelptickets;
+package main.java.simplehelptickets.DB;
 
 import java.io.File;
 import java.sql.Connection;
